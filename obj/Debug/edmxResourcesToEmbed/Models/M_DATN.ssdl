@@ -1,0 +1,611 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DQH_DATNModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tblBinhluan">
+    <Key>
+      <PropertyRef Name="PK_iBinhluanID" />
+    </Key>
+    <Property Name="PK_iBinhluanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sNoidung" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="dThoigian" Type="datetime" Nullable="false" />
+    <Property Name="FK_iNguoidungID" Type="int" Nullable="false" />
+    <Property Name="FK_iSanphamID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DQH_DATN.dbo.tblChitietdonhang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblChitietdonhang">
+    <Key>
+      <PropertyRef Name="FK_iDonhangID" />
+      <PropertyRef Name="FK_iSanphamID" />
+      <PropertyRef Name="iSoluong" />
+      <PropertyRef Name="iDongia" />
+    </Key>
+    <Property Name="FK_iDonhangID" Type="int" Nullable="false" />
+    <Property Name="FK_iSanphamID" Type="int" Nullable="false" />
+    <Property Name="iSoluong" Type="int" Nullable="false" />
+    <Property Name="iDongia" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DQH_DATN.dbo.tblChitietphieunhap' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblChitietphieunhap">
+    <Key>
+      <PropertyRef Name="FK_iPhieunhapID" />
+      <PropertyRef Name="FK_iSanphamID" />
+      <PropertyRef Name="iSoluong" />
+      <PropertyRef Name="iGianhap" />
+      <PropertyRef Name="iGiaban" />
+    </Key>
+    <Property Name="FK_iPhieunhapID" Type="int" Nullable="false" />
+    <Property Name="FK_iSanphamID" Type="int" Nullable="false" />
+    <Property Name="iSoluong" Type="int" Nullable="false" />
+    <Property Name="iGianhap" Type="int" Nullable="false" />
+    <Property Name="iGiaban" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblDanhmucSP">
+    <Key>
+      <PropertyRef Name="PK_iDanhmucID" />
+    </Key>
+    <Property Name="PK_iDanhmucID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sTendanhmuc" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblDonhang">
+    <Key>
+      <PropertyRef Name="PK_iDonhangID" />
+    </Key>
+    <Property Name="PK_iDonhangID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sDiachiGiao" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="sSDT" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="dNgaydat" Type="datetime" Nullable="false" />
+    <Property Name="FK_iNguoidungID" Type="int" Nullable="false" />
+    <Property Name="FK_iTrangthaiID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblLoaitrangthai">
+    <Key>
+      <PropertyRef Name="PK_iLoaiTTID" />
+    </Key>
+    <Property Name="PK_iLoaiTTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sLoaiTT" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblNguoidung">
+    <Key>
+      <PropertyRef Name="PK_iNguoidungID" />
+    </Key>
+    <Property Name="PK_iNguoidungID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sTennguoidung" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="dNgaysinh" Type="datetime" Nullable="false" />
+    <Property Name="bGioitinh" Type="bit" Nullable="false" />
+    <Property Name="sDiachi" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="sSDT" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="sTendangnhap" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="sMatkhau" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FK_iQuyenID" Type="int" Nullable="false" />
+    <Property Name="FK_iTrangthaiID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblNhacungcap">
+    <Key>
+      <PropertyRef Name="PK_iNCCID" />
+    </Key>
+    <Property Name="PK_iNCCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sTenNCC" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="sDiachi" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="sSDT" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblPhieunhap">
+    <Key>
+      <PropertyRef Name="PK_iPhieunhapID" />
+    </Key>
+    <Property Name="PK_iPhieunhapID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dNgaynhap" Type="datetime" Nullable="false" />
+    <Property Name="sGhichu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FK_iNCCID" Type="int" Nullable="false" />
+    <Property Name="FK_iNguoidung" Type="int" Nullable="false" />
+    <Property Name="FK_iTrangthaiID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblQuyen">
+    <Key>
+      <PropertyRef Name="PK_iQuyenID" />
+    </Key>
+    <Property Name="PK_iQuyenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sQuyen" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSanpham">
+    <Key>
+      <PropertyRef Name="PK_iSanphamID" />
+    </Key>
+    <Property Name="PK_iSanphamID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sTenSP" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="sHinhanh" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="sSize" Type="varchar" MaxLength="10" />
+    <Property Name="sMota" Type="nvarchar" MaxLength="500" />
+    <Property Name="iSoluong" Type="int" Nullable="false" />
+    <Property Name="sDonvi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="iDongia" Type="int" Nullable="false" />
+    <Property Name="FK_iDanhmucID" Type="int" Nullable="false" />
+    <Property Name="FK_iNCCID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblTrangthai">
+    <Key>
+      <PropertyRef Name="PK_iTrangthaiID" />
+    </Key>
+    <Property Name="PK_iTrangthaiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sTrangthai" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FK_iLoaiTTID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tblBinhluan_tblNguoidung">
+    <End Role="tblNguoidung" Type="Self.tblNguoidung" Multiplicity="1" />
+    <End Role="tblBinhluan" Type="Self.tblBinhluan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblNguoidung">
+        <PropertyRef Name="PK_iNguoidungID" />
+      </Principal>
+      <Dependent Role="tblBinhluan">
+        <PropertyRef Name="FK_iNguoidungID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBinhluan_tblSanpham">
+    <End Role="tblSanpham" Type="Self.tblSanpham" Multiplicity="1" />
+    <End Role="tblBinhluan" Type="Self.tblBinhluan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSanpham">
+        <PropertyRef Name="PK_iSanphamID" />
+      </Principal>
+      <Dependent Role="tblBinhluan">
+        <PropertyRef Name="FK_iSanphamID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblChitietdonhang_tblDonhang">
+    <End Role="tblDonhang" Type="Self.tblDonhang" Multiplicity="1" />
+    <End Role="tblChitietdonhang" Type="Self.tblChitietdonhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDonhang">
+        <PropertyRef Name="PK_iDonhangID" />
+      </Principal>
+      <Dependent Role="tblChitietdonhang">
+        <PropertyRef Name="FK_iDonhangID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblChitietdonhang_tblSanpham">
+    <End Role="tblSanpham" Type="Self.tblSanpham" Multiplicity="1" />
+    <End Role="tblChitietdonhang" Type="Self.tblChitietdonhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSanpham">
+        <PropertyRef Name="PK_iSanphamID" />
+      </Principal>
+      <Dependent Role="tblChitietdonhang">
+        <PropertyRef Name="FK_iSanphamID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblChitietphieunhap_tblPhieunhap">
+    <End Role="tblPhieunhap" Type="Self.tblPhieunhap" Multiplicity="1" />
+    <End Role="tblChitietphieunhap" Type="Self.tblChitietphieunhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPhieunhap">
+        <PropertyRef Name="PK_iPhieunhapID" />
+      </Principal>
+      <Dependent Role="tblChitietphieunhap">
+        <PropertyRef Name="FK_iPhieunhapID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblChitietphieunhap_tblSanpham">
+    <End Role="tblSanpham" Type="Self.tblSanpham" Multiplicity="1" />
+    <End Role="tblChitietphieunhap" Type="Self.tblChitietphieunhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSanpham">
+        <PropertyRef Name="PK_iSanphamID" />
+      </Principal>
+      <Dependent Role="tblChitietphieunhap">
+        <PropertyRef Name="FK_iSanphamID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDonhang_tblNguoidung">
+    <End Role="tblNguoidung" Type="Self.tblNguoidung" Multiplicity="1" />
+    <End Role="tblDonhang" Type="Self.tblDonhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblNguoidung">
+        <PropertyRef Name="PK_iNguoidungID" />
+      </Principal>
+      <Dependent Role="tblDonhang">
+        <PropertyRef Name="FK_iNguoidungID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDonhang_tblTrangthai">
+    <End Role="tblTrangthai" Type="Self.tblTrangthai" Multiplicity="1" />
+    <End Role="tblDonhang" Type="Self.tblDonhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTrangthai">
+        <PropertyRef Name="PK_iTrangthaiID" />
+      </Principal>
+      <Dependent Role="tblDonhang">
+        <PropertyRef Name="FK_iTrangthaiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblNguoidung_tblQuyen">
+    <End Role="tblQuyen" Type="Self.tblQuyen" Multiplicity="1" />
+    <End Role="tblNguoidung" Type="Self.tblNguoidung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblQuyen">
+        <PropertyRef Name="PK_iQuyenID" />
+      </Principal>
+      <Dependent Role="tblNguoidung">
+        <PropertyRef Name="FK_iQuyenID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblNguoidung_tblTrangthai">
+    <End Role="tblTrangthai" Type="Self.tblTrangthai" Multiplicity="1" />
+    <End Role="tblNguoidung" Type="Self.tblNguoidung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTrangthai">
+        <PropertyRef Name="PK_iTrangthaiID" />
+      </Principal>
+      <Dependent Role="tblNguoidung">
+        <PropertyRef Name="FK_iTrangthaiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPhieunhap_tblNguoidung">
+    <End Role="tblNguoidung" Type="Self.tblNguoidung" Multiplicity="1" />
+    <End Role="tblPhieunhap" Type="Self.tblPhieunhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblNguoidung">
+        <PropertyRef Name="PK_iNguoidungID" />
+      </Principal>
+      <Dependent Role="tblPhieunhap">
+        <PropertyRef Name="FK_iNguoidung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPhieunhap_tblTrangthai">
+    <End Role="tblTrangthai" Type="Self.tblTrangthai" Multiplicity="1" />
+    <End Role="tblPhieunhap" Type="Self.tblPhieunhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTrangthai">
+        <PropertyRef Name="PK_iTrangthaiID" />
+      </Principal>
+      <Dependent Role="tblPhieunhap">
+        <PropertyRef Name="FK_iTrangthaiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSanpham_tblDanhmucSP">
+    <End Role="tblDanhmucSP" Type="Self.tblDanhmucSP" Multiplicity="1" />
+    <End Role="tblSanpham" Type="Self.tblSanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDanhmucSP">
+        <PropertyRef Name="PK_iDanhmucID" />
+      </Principal>
+      <Dependent Role="tblSanpham">
+        <PropertyRef Name="FK_iDanhmucID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSanpham_tblNhacungcap">
+    <End Role="tblNhacungcap" Type="Self.tblNhacungcap" Multiplicity="1" />
+    <End Role="tblSanpham" Type="Self.tblSanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblNhacungcap">
+        <PropertyRef Name="PK_iNCCID" />
+      </Principal>
+      <Dependent Role="tblSanpham">
+        <PropertyRef Name="FK_iNCCID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTrangthai_tblLoaitrangthai">
+    <End Role="tblLoaitrangthai" Type="Self.tblLoaitrangthai" Multiplicity="1" />
+    <End Role="tblTrangthai" Type="Self.tblTrangthai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblLoaitrangthai">
+        <PropertyRef Name="PK_iLoaiTTID" />
+      </Principal>
+      <Dependent Role="tblTrangthai">
+        <PropertyRef Name="FK_iLoaiTTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spBinhluan_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iBinhluanID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spBinhluan_getBySanpham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FK_iSanphamID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spBinhluan_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sNoidung" Type="nvarchar" Mode="In" />
+    <Parameter Name="dThoigian" Type="datetime" Mode="In" />
+    <Parameter Name="FK_iNguoidungID" Type="int" Mode="In" />
+    <Parameter Name="FK_iSanphamID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spBinhluan_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iBinhluanID" Type="int" Mode="In" />
+    <Parameter Name="sNoidung" Type="nvarchar" Mode="In" />
+    <Parameter Name="dThoigian" Type="datetime" Mode="In" />
+    <Parameter Name="FK_iNguoidungID" Type="int" Mode="In" />
+    <Parameter Name="FK_iSanphamID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spChitietdonhang_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FK_iDonhangID" Type="int" Mode="In" />
+    <Parameter Name="FK_iSanphamID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spChitietdonhang_getByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FK_iDonhangID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spChitietdonhang_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FK_iDonhangID" Type="int" Mode="In" />
+    <Parameter Name="FK_iSanphamID" Type="int" Mode="In" />
+    <Parameter Name="iSoluong" Type="int" Mode="In" />
+    <Parameter Name="iDongia" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spChitietdonhang_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FK_iDonhangID" Type="int" Mode="In" />
+    <Parameter Name="FK_iSanphamID" Type="int" Mode="In" />
+    <Parameter Name="iSoluong" Type="int" Mode="In" />
+    <Parameter Name="iDongia" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spChitietphieunhap_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FK_iPhieunhapID" Type="int" Mode="In" />
+    <Parameter Name="FK_iSanphamID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spChitietphieunhap_getByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FK_iPhieunhapID" Type="int" Mode="In" />
+    <Parameter Name="FK_iSanphamID" Type="int" Mode="In" />
+    <Parameter Name="iSoluong" Type="int" Mode="In" />
+    <Parameter Name="iGianhap" Type="int" Mode="In" />
+    <Parameter Name="iGiaban" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spChitietphieunhap_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FK_iPhieunhapID" Type="int" Mode="In" />
+    <Parameter Name="FK_iSanphamID" Type="int" Mode="In" />
+    <Parameter Name="iSoluong" Type="int" Mode="In" />
+    <Parameter Name="iGianhap" Type="int" Mode="In" />
+    <Parameter Name="iGiaban" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spChitietphieunhap_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FK_iPhieunhapID" Type="int" Mode="In" />
+    <Parameter Name="FK_iSanphamID" Type="int" Mode="In" />
+    <Parameter Name="iSoluong" Type="int" Mode="In" />
+    <Parameter Name="iGianhap" Type="int" Mode="In" />
+    <Parameter Name="iGiaban" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spDanhmuc_getbyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iDanhmucID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spDonhang_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iDonhangID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spDonhang_getByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iDonhangiD" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spDonhang_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sDiachiGiao" Type="nvarchar" Mode="In" />
+    <Parameter Name="sSDT" Type="varchar" Mode="In" />
+    <Parameter Name="dNgaydat" Type="datetime" Mode="In" />
+    <Parameter Name="FK_iNguoidungID" Type="int" Mode="In" />
+    <Parameter Name="FK_iTrangthaiID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spDonhang_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iDonhangiD" Type="int" Mode="In" />
+    <Parameter Name="sDiachiGiao" Type="nvarchar" Mode="In" />
+    <Parameter Name="sSDT" Type="varchar" Mode="In" />
+    <Parameter Name="dNgaydat" Type="datetime" Mode="In" />
+    <Parameter Name="FK_iNguoidungID" Type="int" Mode="In" />
+    <Parameter Name="FK_iTrangthaiID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spNguoidung_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iNguoidungID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spNguoidung_getByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iNguoidungID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spNguoidung_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sTennguoidung" Type="nvarchar" Mode="In" />
+    <Parameter Name="dNgaysinh" Type="datetime" Mode="In" />
+    <Parameter Name="bGioitinh" Type="bit" Mode="In" />
+    <Parameter Name="sDiachi" Type="nvarchar" Mode="In" />
+    <Parameter Name="sSDT" Type="varchar" Mode="In" />
+    <Parameter Name="sTendangnhap" Type="varchar" Mode="In" />
+    <Parameter Name="sMatkhau" Type="varchar" Mode="In" />
+    <Parameter Name="FK_iQuyenID" Type="int" Mode="In" />
+    <Parameter Name="FK_iTrangthaiID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spNguoidung_login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sTendangnhap" Type="nvarchar" Mode="In" />
+    <Parameter Name="sMatkhau" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="spNguoidung_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iNguoidungID" Type="int" Mode="In" />
+    <Parameter Name="sTennguoidung" Type="nvarchar" Mode="In" />
+    <Parameter Name="dNgaysinh" Type="datetime" Mode="In" />
+    <Parameter Name="bGioitinh" Type="bit" Mode="In" />
+    <Parameter Name="sDiachi" Type="nvarchar" Mode="In" />
+    <Parameter Name="sSDT" Type="varchar" Mode="In" />
+    <Parameter Name="sTendangnhap" Type="varchar" Mode="In" />
+    <Parameter Name="sMatkhau" Type="varchar" Mode="In" />
+    <Parameter Name="FK_iQuyenID" Type="int" Mode="In" />
+    <Parameter Name="FK_iTrangthaiID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spNhacungcap_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iNCCID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spNhacungcap_getByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iNCCID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spNhacungcap_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sTenNCC" Type="nvarchar" Mode="In" />
+    <Parameter Name="sDiachi" Type="nvarchar" Mode="In" />
+    <Parameter Name="sSDT" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="spNhacungcap_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iNCCID" Type="int" Mode="In" />
+    <Parameter Name="sTenNCC" Type="nvarchar" Mode="In" />
+    <Parameter Name="sDiachi" Type="nvarchar" Mode="In" />
+    <Parameter Name="sSDT" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="spSanpham_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iSanphamID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spSanpham_getbyDanhmuc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FK_iDanhmucID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spSanpham_GetbyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iSanphamID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spSanpham_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sTenSP" Type="nvarchar" Mode="In" />
+    <Parameter Name="sHinhanh" Type="varchar" Mode="In" />
+    <Parameter Name="sMota" Type="nvarchar" Mode="In" />
+    <Parameter Name="iSoluong" Type="int" Mode="In" />
+    <Parameter Name="sDonvi" Type="nvarchar" Mode="In" />
+    <Parameter Name="iDongia" Type="int" Mode="In" />
+    <Parameter Name="FK_iDanhmucID" Type="int" Mode="In" />
+    <Parameter Name="FK_iNCCID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spSanpham_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PK_iSanphamID" Type="int" Mode="In" />
+    <Parameter Name="sTenSP" Type="nvarchar" Mode="In" />
+    <Parameter Name="sHinhanh" Type="varchar" Mode="In" />
+    <Parameter Name="sMota" Type="nvarchar" Mode="In" />
+    <Parameter Name="iSoluong" Type="int" Mode="In" />
+    <Parameter Name="sDonvi" Type="nvarchar" Mode="In" />
+    <Parameter Name="iDongia" Type="int" Mode="In" />
+    <Parameter Name="FK_iDanhmucID" Type="int" Mode="In" />
+    <Parameter Name="FK_iNCCID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="DQH_DATNModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBinhluan" EntityType="Self.tblBinhluan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDanhmucSP" EntityType="Self.tblDanhmucSP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDonhang" EntityType="Self.tblDonhang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLoaitrangthai" EntityType="Self.tblLoaitrangthai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblNguoidung" EntityType="Self.tblNguoidung" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblNhacungcap" EntityType="Self.tblNhacungcap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPhieunhap" EntityType="Self.tblPhieunhap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblQuyen" EntityType="Self.tblQuyen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSanpham" EntityType="Self.tblSanpham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTrangthai" EntityType="Self.tblTrangthai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblChitietdonhang" EntityType="Self.tblChitietdonhang" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblChitietdonhang].[FK_iDonhangID] AS [FK_iDonhangID], 
+    [tblChitietdonhang].[FK_iSanphamID] AS [FK_iSanphamID], 
+    [tblChitietdonhang].[iSoluong] AS [iSoluong], 
+    [tblChitietdonhang].[iDongia] AS [iDongia]
+    FROM [dbo].[tblChitietdonhang] AS [tblChitietdonhang]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblChitietphieunhap" EntityType="Self.tblChitietphieunhap" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblChitietphieunhap].[FK_iPhieunhapID] AS [FK_iPhieunhapID], 
+    [tblChitietphieunhap].[FK_iSanphamID] AS [FK_iSanphamID], 
+    [tblChitietphieunhap].[iSoluong] AS [iSoluong], 
+    [tblChitietphieunhap].[iGianhap] AS [iGianhap], 
+    [tblChitietphieunhap].[iGiaban] AS [iGiaban]
+    FROM [dbo].[tblChitietphieunhap] AS [tblChitietphieunhap]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_tblBinhluan_tblNguoidung" Association="Self.FK_tblBinhluan_tblNguoidung">
+      <End Role="tblNguoidung" EntitySet="tblNguoidung" />
+      <End Role="tblBinhluan" EntitySet="tblBinhluan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBinhluan_tblSanpham" Association="Self.FK_tblBinhluan_tblSanpham">
+      <End Role="tblSanpham" EntitySet="tblSanpham" />
+      <End Role="tblBinhluan" EntitySet="tblBinhluan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblChitietdonhang_tblDonhang" Association="Self.FK_tblChitietdonhang_tblDonhang">
+      <End Role="tblDonhang" EntitySet="tblDonhang" />
+      <End Role="tblChitietdonhang" EntitySet="tblChitietdonhang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblChitietdonhang_tblSanpham" Association="Self.FK_tblChitietdonhang_tblSanpham">
+      <End Role="tblSanpham" EntitySet="tblSanpham" />
+      <End Role="tblChitietdonhang" EntitySet="tblChitietdonhang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblChitietphieunhap_tblPhieunhap" Association="Self.FK_tblChitietphieunhap_tblPhieunhap">
+      <End Role="tblPhieunhap" EntitySet="tblPhieunhap" />
+      <End Role="tblChitietphieunhap" EntitySet="tblChitietphieunhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblChitietphieunhap_tblSanpham" Association="Self.FK_tblChitietphieunhap_tblSanpham">
+      <End Role="tblSanpham" EntitySet="tblSanpham" />
+      <End Role="tblChitietphieunhap" EntitySet="tblChitietphieunhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDonhang_tblNguoidung" Association="Self.FK_tblDonhang_tblNguoidung">
+      <End Role="tblNguoidung" EntitySet="tblNguoidung" />
+      <End Role="tblDonhang" EntitySet="tblDonhang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDonhang_tblTrangthai" Association="Self.FK_tblDonhang_tblTrangthai">
+      <End Role="tblTrangthai" EntitySet="tblTrangthai" />
+      <End Role="tblDonhang" EntitySet="tblDonhang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblNguoidung_tblQuyen" Association="Self.FK_tblNguoidung_tblQuyen">
+      <End Role="tblQuyen" EntitySet="tblQuyen" />
+      <End Role="tblNguoidung" EntitySet="tblNguoidung" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblNguoidung_tblTrangthai" Association="Self.FK_tblNguoidung_tblTrangthai">
+      <End Role="tblTrangthai" EntitySet="tblTrangthai" />
+      <End Role="tblNguoidung" EntitySet="tblNguoidung" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPhieunhap_tblNguoidung" Association="Self.FK_tblPhieunhap_tblNguoidung">
+      <End Role="tblNguoidung" EntitySet="tblNguoidung" />
+      <End Role="tblPhieunhap" EntitySet="tblPhieunhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPhieunhap_tblTrangthai" Association="Self.FK_tblPhieunhap_tblTrangthai">
+      <End Role="tblTrangthai" EntitySet="tblTrangthai" />
+      <End Role="tblPhieunhap" EntitySet="tblPhieunhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSanpham_tblDanhmucSP" Association="Self.FK_tblSanpham_tblDanhmucSP">
+      <End Role="tblDanhmucSP" EntitySet="tblDanhmucSP" />
+      <End Role="tblSanpham" EntitySet="tblSanpham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSanpham_tblNhacungcap" Association="Self.FK_tblSanpham_tblNhacungcap">
+      <End Role="tblNhacungcap" EntitySet="tblNhacungcap" />
+      <End Role="tblSanpham" EntitySet="tblSanpham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTrangthai_tblLoaitrangthai" Association="Self.FK_tblTrangthai_tblLoaitrangthai">
+      <End Role="tblLoaitrangthai" EntitySet="tblLoaitrangthai" />
+      <End Role="tblTrangthai" EntitySet="tblTrangthai" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

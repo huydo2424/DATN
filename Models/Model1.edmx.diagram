@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="11654de4cdd04bb69120ec9d1a72cac9" Name="Diagram1">
+        <EntityTypeShape EntityType="DQH_DATNModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DQH_DATNModel.tblBinhluan" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DQH_DATNModel.tblDanhmucSP" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DQH_DATNModel.tblDonhang" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DQH_DATNModel.tblLoaitrangthai" Width="1.5" PointX="1.5" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DQH_DATNModel.tblNguoidung" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DQH_DATNModel.tblNhacungcap" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DQH_DATNModel.tblPhieunhap" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DQH_DATNModel.tblQuyen" Width="1.5" PointX="1.5" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="DQH_DATNModel.tblSanpham" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DQH_DATNModel.tblTrangthai" Width="1.5" PointX="1.5" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DQH_DATNModel.tblChitietdonhang" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DQH_DATNModel.tblChitietphieunhap" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblBinhluan_tblNguoidung" ManuallyRouted="false" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblBinhluan_tblSanpham" ManuallyRouted="false" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblSanpham_tblDanhmucSP" ManuallyRouted="false" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblChitietdonhang_tblDonhang" ManuallyRouted="false" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblDonhang_tblNguoidung" ManuallyRouted="false" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblDonhang_tblTrangthai" ManuallyRouted="false" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblTrangthai_tblLoaitrangthai" ManuallyRouted="false" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblNguoidung_tblQuyen" ManuallyRouted="false" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblNguoidung_tblTrangthai" ManuallyRouted="false" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblPhieunhap_tblNguoidung" ManuallyRouted="false" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblSanpham_tblNhacungcap" ManuallyRouted="false" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblChitietphieunhap_tblPhieunhap" ManuallyRouted="false" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblPhieunhap_tblTrangthai" ManuallyRouted="false" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblChitietdonhang_tblSanpham" ManuallyRouted="false" />
+        <AssociationConnector Association="DQH_DATNModel.FK_tblChitietphieunhap_tblSanpham" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

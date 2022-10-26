@@ -1,0 +1,708 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DQH_DATNModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblBinhluan">
+    <Key>
+      <PropertyRef Name="PK_iBinhluanID" />
+    </Key>
+    <Property Name="PK_iBinhluanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sNoidung" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dThoigian" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FK_iNguoidungID" Type="Int32" Nullable="false" />
+    <Property Name="FK_iSanphamID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblNguoidung" Relationship="Self.FK_tblBinhluan_tblNguoidung" FromRole="tblBinhluan" ToRole="tblNguoidung" />
+    <NavigationProperty Name="tblSanpham" Relationship="Self.FK_tblBinhluan_tblSanpham" FromRole="tblBinhluan" ToRole="tblSanpham" />
+  </EntityType>
+  <EntityType Name="tblDanhmucSP">
+    <Key>
+      <PropertyRef Name="PK_iDanhmucID" />
+    </Key>
+    <Property Name="PK_iDanhmucID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sTendanhmuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblSanpham" Relationship="Self.FK_tblSanpham_tblDanhmucSP" FromRole="tblDanhmucSP" ToRole="tblSanpham" />
+  </EntityType>
+  <EntityType Name="tblDonhang">
+    <Key>
+      <PropertyRef Name="PK_iDonhangID" />
+    </Key>
+    <Property Name="PK_iDonhangID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sDiachiGiao" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sSDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dNgaydat" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FK_iNguoidungID" Type="Int32" Nullable="false" />
+    <Property Name="FK_iTrangthaiID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblChitietdonhang" Relationship="Self.FK_tblChitietdonhang_tblDonhang" FromRole="tblDonhang" ToRole="tblChitietdonhang" />
+    <NavigationProperty Name="tblNguoidung" Relationship="Self.FK_tblDonhang_tblNguoidung" FromRole="tblDonhang" ToRole="tblNguoidung" />
+    <NavigationProperty Name="tblTrangthai" Relationship="Self.FK_tblDonhang_tblTrangthai" FromRole="tblDonhang" ToRole="tblTrangthai" />
+  </EntityType>
+  <EntityType Name="tblLoaitrangthai">
+    <Key>
+      <PropertyRef Name="PK_iLoaiTTID" />
+    </Key>
+    <Property Name="PK_iLoaiTTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sLoaiTT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblTrangthai" Relationship="Self.FK_tblTrangthai_tblLoaitrangthai" FromRole="tblLoaitrangthai" ToRole="tblTrangthai" />
+  </EntityType>
+  <EntityType Name="tblNguoidung">
+    <Key>
+      <PropertyRef Name="PK_iNguoidungID" />
+    </Key>
+    <Property Name="PK_iNguoidungID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sTennguoidung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dNgaysinh" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="bGioitinh" Type="Boolean" Nullable="false" />
+    <Property Name="sDiachi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sSDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sTendangnhap" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sMatkhau" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FK_iQuyenID" Type="Int32" Nullable="false" />
+    <Property Name="FK_iTrangthaiID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblBinhluan" Relationship="Self.FK_tblBinhluan_tblNguoidung" FromRole="tblNguoidung" ToRole="tblBinhluan" />
+    <NavigationProperty Name="tblDonhang" Relationship="Self.FK_tblDonhang_tblNguoidung" FromRole="tblNguoidung" ToRole="tblDonhang" />
+    <NavigationProperty Name="tblQuyen" Relationship="Self.FK_tblNguoidung_tblQuyen" FromRole="tblNguoidung" ToRole="tblQuyen" />
+    <NavigationProperty Name="tblTrangthai" Relationship="Self.FK_tblNguoidung_tblTrangthai" FromRole="tblNguoidung" ToRole="tblTrangthai" />
+    <NavigationProperty Name="tblPhieunhap" Relationship="Self.FK_tblPhieunhap_tblNguoidung" FromRole="tblNguoidung" ToRole="tblPhieunhap" />
+  </EntityType>
+  <EntityType Name="tblNhacungcap">
+    <Key>
+      <PropertyRef Name="PK_iNCCID" />
+    </Key>
+    <Property Name="PK_iNCCID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sTenNCC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sDiachi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sSDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tblSanpham" Relationship="Self.FK_tblSanpham_tblNhacungcap" FromRole="tblNhacungcap" ToRole="tblSanpham" />
+  </EntityType>
+  <EntityType Name="tblPhieunhap">
+    <Key>
+      <PropertyRef Name="PK_iPhieunhapID" />
+    </Key>
+    <Property Name="PK_iPhieunhapID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dNgaynhap" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="sGhichu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FK_iNCCID" Type="Int32" Nullable="false" />
+    <Property Name="FK_iNguoidung" Type="Int32" Nullable="false" />
+    <Property Name="FK_iTrangthaiID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblNguoidung" Relationship="Self.FK_tblPhieunhap_tblNguoidung" FromRole="tblPhieunhap" ToRole="tblNguoidung" />
+    <NavigationProperty Name="tblChitietphieunhap" Relationship="Self.FK_tblChitietphieunhap_tblPhieunhap" FromRole="tblPhieunhap" ToRole="tblChitietphieunhap" />
+    <NavigationProperty Name="tblTrangthai" Relationship="Self.FK_tblPhieunhap_tblTrangthai" FromRole="tblPhieunhap" ToRole="tblTrangthai" />
+  </EntityType>
+  <EntityType Name="tblQuyen">
+    <Key>
+      <PropertyRef Name="PK_iQuyenID" />
+    </Key>
+    <Property Name="PK_iQuyenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sQuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblNguoidung" Relationship="Self.FK_tblNguoidung_tblQuyen" FromRole="tblQuyen" ToRole="tblNguoidung" />
+  </EntityType>
+  <EntityType Name="tblSanpham">
+    <Key>
+      <PropertyRef Name="PK_iSanphamID" />
+    </Key>
+    <Property Name="PK_iSanphamID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sTenSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sHinhanh" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sSize" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="sMota" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="iSoluong" Type="Int32" Nullable="false" />
+    <Property Name="sDonvi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="iDongia" Type="Int32" Nullable="false" />
+    <Property Name="FK_iDanhmucID" Type="Int32" Nullable="false" />
+    <Property Name="FK_iNCCID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblBinhluan" Relationship="Self.FK_tblBinhluan_tblSanpham" FromRole="tblSanpham" ToRole="tblBinhluan" />
+    <NavigationProperty Name="tblDanhmucSP" Relationship="Self.FK_tblSanpham_tblDanhmucSP" FromRole="tblSanpham" ToRole="tblDanhmucSP" />
+    <NavigationProperty Name="tblNhacungcap" Relationship="Self.FK_tblSanpham_tblNhacungcap" FromRole="tblSanpham" ToRole="tblNhacungcap" />
+    <NavigationProperty Name="tblChitietdonhang" Relationship="Self.FK_tblChitietdonhang_tblSanpham" FromRole="tblSanpham" ToRole="tblChitietdonhang" />
+    <NavigationProperty Name="tblChitietphieunhap" Relationship="Self.FK_tblChitietphieunhap_tblSanpham" FromRole="tblSanpham" ToRole="tblChitietphieunhap" />
+  </EntityType>
+  <EntityType Name="tblTrangthai">
+    <Key>
+      <PropertyRef Name="PK_iTrangthaiID" />
+    </Key>
+    <Property Name="PK_iTrangthaiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sTrangthai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FK_iLoaiTTID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblDonhang" Relationship="Self.FK_tblDonhang_tblTrangthai" FromRole="tblTrangthai" ToRole="tblDonhang" />
+    <NavigationProperty Name="tblLoaitrangthai" Relationship="Self.FK_tblTrangthai_tblLoaitrangthai" FromRole="tblTrangthai" ToRole="tblLoaitrangthai" />
+    <NavigationProperty Name="tblNguoidung" Relationship="Self.FK_tblNguoidung_tblTrangthai" FromRole="tblTrangthai" ToRole="tblNguoidung" />
+    <NavigationProperty Name="tblPhieunhap" Relationship="Self.FK_tblPhieunhap_tblTrangthai" FromRole="tblTrangthai" ToRole="tblPhieunhap" />
+  </EntityType>
+  <EntityType Name="tblChitietdonhang">
+    <Key>
+      <PropertyRef Name="FK_iDonhangID" />
+      <PropertyRef Name="FK_iSanphamID" />
+      <PropertyRef Name="iSoluong" />
+      <PropertyRef Name="iDongia" />
+    </Key>
+    <Property Name="FK_iDonhangID" Type="Int32" Nullable="false" />
+    <Property Name="FK_iSanphamID" Type="Int32" Nullable="false" />
+    <Property Name="iSoluong" Type="Int32" Nullable="false" />
+    <Property Name="iDongia" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblDonhang" Relationship="Self.FK_tblChitietdonhang_tblDonhang" FromRole="tblChitietdonhang" ToRole="tblDonhang" />
+    <NavigationProperty Name="tblSanpham" Relationship="Self.FK_tblChitietdonhang_tblSanpham" FromRole="tblChitietdonhang" ToRole="tblSanpham" />
+  </EntityType>
+  <EntityType Name="tblChitietphieunhap">
+    <Key>
+      <PropertyRef Name="FK_iPhieunhapID" />
+      <PropertyRef Name="FK_iSanphamID" />
+      <PropertyRef Name="iSoluong" />
+      <PropertyRef Name="iGianhap" />
+      <PropertyRef Name="iGiaban" />
+    </Key>
+    <Property Name="FK_iPhieunhapID" Type="Int32" Nullable="false" />
+    <Property Name="FK_iSanphamID" Type="Int32" Nullable="false" />
+    <Property Name="iSoluong" Type="Int32" Nullable="false" />
+    <Property Name="iGianhap" Type="Int32" Nullable="false" />
+    <Property Name="iGiaban" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblPhieunhap" Relationship="Self.FK_tblChitietphieunhap_tblPhieunhap" FromRole="tblChitietphieunhap" ToRole="tblPhieunhap" />
+    <NavigationProperty Name="tblSanpham" Relationship="Self.FK_tblChitietphieunhap_tblSanpham" FromRole="tblChitietphieunhap" ToRole="tblSanpham" />
+  </EntityType>
+  <Association Name="FK_tblBinhluan_tblNguoidung">
+    <End Role="tblNguoidung" Type="Self.tblNguoidung" Multiplicity="1" />
+    <End Role="tblBinhluan" Type="Self.tblBinhluan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblNguoidung">
+        <PropertyRef Name="PK_iNguoidungID" />
+      </Principal>
+      <Dependent Role="tblBinhluan">
+        <PropertyRef Name="FK_iNguoidungID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBinhluan_tblSanpham">
+    <End Role="tblSanpham" Type="Self.tblSanpham" Multiplicity="1" />
+    <End Role="tblBinhluan" Type="Self.tblBinhluan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSanpham">
+        <PropertyRef Name="PK_iSanphamID" />
+      </Principal>
+      <Dependent Role="tblBinhluan">
+        <PropertyRef Name="FK_iSanphamID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSanpham_tblDanhmucSP">
+    <End Role="tblDanhmucSP" Type="Self.tblDanhmucSP" Multiplicity="1" />
+    <End Role="tblSanpham" Type="Self.tblSanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDanhmucSP">
+        <PropertyRef Name="PK_iDanhmucID" />
+      </Principal>
+      <Dependent Role="tblSanpham">
+        <PropertyRef Name="FK_iDanhmucID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblChitietdonhang_tblDonhang">
+    <End Role="tblDonhang" Type="Self.tblDonhang" Multiplicity="1" />
+    <End Role="tblChitietdonhang" Type="Self.tblChitietdonhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDonhang">
+        <PropertyRef Name="PK_iDonhangID" />
+      </Principal>
+      <Dependent Role="tblChitietdonhang">
+        <PropertyRef Name="FK_iDonhangID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDonhang_tblNguoidung">
+    <End Role="tblNguoidung" Type="Self.tblNguoidung" Multiplicity="1" />
+    <End Role="tblDonhang" Type="Self.tblDonhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblNguoidung">
+        <PropertyRef Name="PK_iNguoidungID" />
+      </Principal>
+      <Dependent Role="tblDonhang">
+        <PropertyRef Name="FK_iNguoidungID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDonhang_tblTrangthai">
+    <End Role="tblTrangthai" Type="Self.tblTrangthai" Multiplicity="1" />
+    <End Role="tblDonhang" Type="Self.tblDonhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTrangthai">
+        <PropertyRef Name="PK_iTrangthaiID" />
+      </Principal>
+      <Dependent Role="tblDonhang">
+        <PropertyRef Name="FK_iTrangthaiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblTrangthai_tblLoaitrangthai">
+    <End Role="tblLoaitrangthai" Type="Self.tblLoaitrangthai" Multiplicity="1" />
+    <End Role="tblTrangthai" Type="Self.tblTrangthai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblLoaitrangthai">
+        <PropertyRef Name="PK_iLoaiTTID" />
+      </Principal>
+      <Dependent Role="tblTrangthai">
+        <PropertyRef Name="FK_iLoaiTTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblNguoidung_tblQuyen">
+    <End Role="tblQuyen" Type="Self.tblQuyen" Multiplicity="1" />
+    <End Role="tblNguoidung" Type="Self.tblNguoidung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblQuyen">
+        <PropertyRef Name="PK_iQuyenID" />
+      </Principal>
+      <Dependent Role="tblNguoidung">
+        <PropertyRef Name="FK_iQuyenID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblNguoidung_tblTrangthai">
+    <End Role="tblTrangthai" Type="Self.tblTrangthai" Multiplicity="1" />
+    <End Role="tblNguoidung" Type="Self.tblNguoidung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTrangthai">
+        <PropertyRef Name="PK_iTrangthaiID" />
+      </Principal>
+      <Dependent Role="tblNguoidung">
+        <PropertyRef Name="FK_iTrangthaiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPhieunhap_tblNguoidung">
+    <End Role="tblNguoidung" Type="Self.tblNguoidung" Multiplicity="1" />
+    <End Role="tblPhieunhap" Type="Self.tblPhieunhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblNguoidung">
+        <PropertyRef Name="PK_iNguoidungID" />
+      </Principal>
+      <Dependent Role="tblPhieunhap">
+        <PropertyRef Name="FK_iNguoidung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSanpham_tblNhacungcap">
+    <End Role="tblNhacungcap" Type="Self.tblNhacungcap" Multiplicity="1" />
+    <End Role="tblSanpham" Type="Self.tblSanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblNhacungcap">
+        <PropertyRef Name="PK_iNCCID" />
+      </Principal>
+      <Dependent Role="tblSanpham">
+        <PropertyRef Name="FK_iNCCID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblChitietphieunhap_tblPhieunhap">
+    <End Role="tblPhieunhap" Type="Self.tblPhieunhap" Multiplicity="1" />
+    <End Role="tblChitietphieunhap" Type="Self.tblChitietphieunhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPhieunhap">
+        <PropertyRef Name="PK_iPhieunhapID" />
+      </Principal>
+      <Dependent Role="tblChitietphieunhap">
+        <PropertyRef Name="FK_iPhieunhapID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPhieunhap_tblTrangthai">
+    <End Role="tblTrangthai" Type="Self.tblTrangthai" Multiplicity="1" />
+    <End Role="tblPhieunhap" Type="Self.tblPhieunhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTrangthai">
+        <PropertyRef Name="PK_iTrangthaiID" />
+      </Principal>
+      <Dependent Role="tblPhieunhap">
+        <PropertyRef Name="FK_iTrangthaiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblChitietdonhang_tblSanpham">
+    <End Role="tblSanpham" Type="Self.tblSanpham" Multiplicity="1" />
+    <End Role="tblChitietdonhang" Type="Self.tblChitietdonhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSanpham">
+        <PropertyRef Name="PK_iSanphamID" />
+      </Principal>
+      <Dependent Role="tblChitietdonhang">
+        <PropertyRef Name="FK_iSanphamID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblChitietphieunhap_tblSanpham">
+    <End Role="tblSanpham" Type="Self.tblSanpham" Multiplicity="1" />
+    <End Role="tblChitietphieunhap" Type="Self.tblChitietphieunhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSanpham">
+        <PropertyRef Name="PK_iSanphamID" />
+      </Principal>
+      <Dependent Role="tblChitietphieunhap">
+        <PropertyRef Name="FK_iSanphamID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DQH_DATNEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tblBinhluan" EntityType="Self.tblBinhluan" />
+    <EntitySet Name="tblDanhmucSP" EntityType="Self.tblDanhmucSP" />
+    <EntitySet Name="tblDonhang" EntityType="Self.tblDonhang" />
+    <EntitySet Name="tblLoaitrangthai" EntityType="Self.tblLoaitrangthai" />
+    <EntitySet Name="tblNguoidung" EntityType="Self.tblNguoidung" />
+    <EntitySet Name="tblNhacungcap" EntityType="Self.tblNhacungcap" />
+    <EntitySet Name="tblPhieunhap" EntityType="Self.tblPhieunhap" />
+    <EntitySet Name="tblQuyen" EntityType="Self.tblQuyen" />
+    <EntitySet Name="tblSanpham" EntityType="Self.tblSanpham" />
+    <EntitySet Name="tblTrangthai" EntityType="Self.tblTrangthai" />
+    <EntitySet Name="tblChitietdonhang" EntityType="Self.tblChitietdonhang" />
+    <EntitySet Name="tblChitietphieunhap" EntityType="Self.tblChitietphieunhap" />
+    <AssociationSet Name="FK_tblBinhluan_tblNguoidung" Association="Self.FK_tblBinhluan_tblNguoidung">
+      <End Role="tblNguoidung" EntitySet="tblNguoidung" />
+      <End Role="tblBinhluan" EntitySet="tblBinhluan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBinhluan_tblSanpham" Association="Self.FK_tblBinhluan_tblSanpham">
+      <End Role="tblSanpham" EntitySet="tblSanpham" />
+      <End Role="tblBinhluan" EntitySet="tblBinhluan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSanpham_tblDanhmucSP" Association="Self.FK_tblSanpham_tblDanhmucSP">
+      <End Role="tblDanhmucSP" EntitySet="tblDanhmucSP" />
+      <End Role="tblSanpham" EntitySet="tblSanpham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblChitietdonhang_tblDonhang" Association="Self.FK_tblChitietdonhang_tblDonhang">
+      <End Role="tblDonhang" EntitySet="tblDonhang" />
+      <End Role="tblChitietdonhang" EntitySet="tblChitietdonhang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDonhang_tblNguoidung" Association="Self.FK_tblDonhang_tblNguoidung">
+      <End Role="tblNguoidung" EntitySet="tblNguoidung" />
+      <End Role="tblDonhang" EntitySet="tblDonhang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDonhang_tblTrangthai" Association="Self.FK_tblDonhang_tblTrangthai">
+      <End Role="tblTrangthai" EntitySet="tblTrangthai" />
+      <End Role="tblDonhang" EntitySet="tblDonhang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblTrangthai_tblLoaitrangthai" Association="Self.FK_tblTrangthai_tblLoaitrangthai">
+      <End Role="tblLoaitrangthai" EntitySet="tblLoaitrangthai" />
+      <End Role="tblTrangthai" EntitySet="tblTrangthai" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblNguoidung_tblQuyen" Association="Self.FK_tblNguoidung_tblQuyen">
+      <End Role="tblQuyen" EntitySet="tblQuyen" />
+      <End Role="tblNguoidung" EntitySet="tblNguoidung" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblNguoidung_tblTrangthai" Association="Self.FK_tblNguoidung_tblTrangthai">
+      <End Role="tblTrangthai" EntitySet="tblTrangthai" />
+      <End Role="tblNguoidung" EntitySet="tblNguoidung" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPhieunhap_tblNguoidung" Association="Self.FK_tblPhieunhap_tblNguoidung">
+      <End Role="tblNguoidung" EntitySet="tblNguoidung" />
+      <End Role="tblPhieunhap" EntitySet="tblPhieunhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSanpham_tblNhacungcap" Association="Self.FK_tblSanpham_tblNhacungcap">
+      <End Role="tblNhacungcap" EntitySet="tblNhacungcap" />
+      <End Role="tblSanpham" EntitySet="tblSanpham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblChitietphieunhap_tblPhieunhap" Association="Self.FK_tblChitietphieunhap_tblPhieunhap">
+      <End Role="tblPhieunhap" EntitySet="tblPhieunhap" />
+      <End Role="tblChitietphieunhap" EntitySet="tblChitietphieunhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPhieunhap_tblTrangthai" Association="Self.FK_tblPhieunhap_tblTrangthai">
+      <End Role="tblTrangthai" EntitySet="tblTrangthai" />
+      <End Role="tblPhieunhap" EntitySet="tblPhieunhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblChitietdonhang_tblSanpham" Association="Self.FK_tblChitietdonhang_tblSanpham">
+      <End Role="tblSanpham" EntitySet="tblSanpham" />
+      <End Role="tblChitietdonhang" EntitySet="tblChitietdonhang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblChitietphieunhap_tblSanpham" Association="Self.FK_tblChitietphieunhap_tblSanpham">
+      <End Role="tblSanpham" EntitySet="tblSanpham" />
+      <End Role="tblChitietphieunhap" EntitySet="tblChitietphieunhap" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DQH_DATNModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DQH_DATNModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="spBinhluan_delete">
+      <Parameter Name="PK_iBinhluanID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spBinhluan_getBySanpham" ReturnType="Collection(DQH_DATNModel.spBinhluan_getBySanpham_Result)">
+      <Parameter Name="FK_iSanphamID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spBinhluan_insert">
+      <Parameter Name="sNoidung" Mode="In" Type="String" />
+      <Parameter Name="dThoigian" Mode="In" Type="DateTime" />
+      <Parameter Name="FK_iNguoidungID" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iSanphamID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spBinhluan_update">
+      <Parameter Name="PK_iBinhluanID" Mode="In" Type="Int32" />
+      <Parameter Name="sNoidung" Mode="In" Type="String" />
+      <Parameter Name="dThoigian" Mode="In" Type="DateTime" />
+      <Parameter Name="FK_iNguoidungID" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iSanphamID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spChitietdonhang_delete">
+      <Parameter Name="FK_iDonhangID" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iSanphamID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spChitietdonhang_getByID" ReturnType="Collection(DQH_DATNModel.spChitietdonhang_getByID_Result)">
+      <Parameter Name="FK_iDonhangID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spChitietdonhang_insert">
+      <Parameter Name="FK_iDonhangID" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iSanphamID" Mode="In" Type="Int32" />
+      <Parameter Name="iSoluong" Mode="In" Type="Int32" />
+      <Parameter Name="iDongia" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spChitietdonhang_update">
+      <Parameter Name="FK_iDonhangID" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iSanphamID" Mode="In" Type="Int32" />
+      <Parameter Name="iSoluong" Mode="In" Type="Int32" />
+      <Parameter Name="iDongia" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spChitietphieunhap_delete">
+      <Parameter Name="FK_iPhieunhapID" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iSanphamID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spChitietphieunhap_getByID" ReturnType="Collection(DQH_DATNModel.spChitietphieunhap_getByID_Result)">
+      <Parameter Name="FK_iPhieunhapID" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iSanphamID" Mode="In" Type="Int32" />
+      <Parameter Name="iSoluong" Mode="In" Type="Int32" />
+      <Parameter Name="iGianhap" Mode="In" Type="Int32" />
+      <Parameter Name="iGiaban" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spChitietphieunhap_insert">
+      <Parameter Name="FK_iPhieunhapID" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iSanphamID" Mode="In" Type="Int32" />
+      <Parameter Name="iSoluong" Mode="In" Type="Int32" />
+      <Parameter Name="iGianhap" Mode="In" Type="Int32" />
+      <Parameter Name="iGiaban" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spChitietphieunhap_update">
+      <Parameter Name="FK_iPhieunhapID" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iSanphamID" Mode="In" Type="Int32" />
+      <Parameter Name="iSoluong" Mode="In" Type="Int32" />
+      <Parameter Name="iGianhap" Mode="In" Type="Int32" />
+      <Parameter Name="iGiaban" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spDanhmuc_getbyID" ReturnType="Collection(DQH_DATNModel.spDanhmuc_getbyID_Result)">
+      <Parameter Name="PK_iDanhmucID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spDonhang_delete">
+      <Parameter Name="PK_iDonhangID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spDonhang_getByID" ReturnType="Collection(DQH_DATNModel.spDonhang_getByID_Result)">
+      <Parameter Name="PK_iDonhangiD" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spDonhang_insert">
+      <Parameter Name="sDiachiGiao" Mode="In" Type="String" />
+      <Parameter Name="sSDT" Mode="In" Type="String" />
+      <Parameter Name="dNgaydat" Mode="In" Type="DateTime" />
+      <Parameter Name="FK_iNguoidungID" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iTrangthaiID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spDonhang_update">
+      <Parameter Name="PK_iDonhangiD" Mode="In" Type="Int32" />
+      <Parameter Name="sDiachiGiao" Mode="In" Type="String" />
+      <Parameter Name="sSDT" Mode="In" Type="String" />
+      <Parameter Name="dNgaydat" Mode="In" Type="DateTime" />
+      <Parameter Name="FK_iNguoidungID" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iTrangthaiID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spNguoidung_delete">
+      <Parameter Name="PK_iNguoidungID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spNguoidung_getByID" ReturnType="Collection(DQH_DATNModel.spNguoidung_getByID_Result)">
+      <Parameter Name="PK_iNguoidungID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spNguoidung_insert">
+      <Parameter Name="sTennguoidung" Mode="In" Type="String" />
+      <Parameter Name="dNgaysinh" Mode="In" Type="DateTime" />
+      <Parameter Name="bGioitinh" Mode="In" Type="Boolean" />
+      <Parameter Name="sDiachi" Mode="In" Type="String" />
+      <Parameter Name="sSDT" Mode="In" Type="String" />
+      <Parameter Name="sTendangnhap" Mode="In" Type="String" />
+      <Parameter Name="sMatkhau" Mode="In" Type="String" />
+      <Parameter Name="FK_iQuyenID" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iTrangthaiID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spNguoidung_login" ReturnType="Collection(DQH_DATNModel.spNguoidung_login_Result)">
+      <Parameter Name="sTendangnhap" Mode="In" Type="String" />
+      <Parameter Name="sMatkhau" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spNguoidung_update">
+      <Parameter Name="PK_iNguoidungID" Mode="In" Type="Int32" />
+      <Parameter Name="sTennguoidung" Mode="In" Type="String" />
+      <Parameter Name="dNgaysinh" Mode="In" Type="DateTime" />
+      <Parameter Name="bGioitinh" Mode="In" Type="Boolean" />
+      <Parameter Name="sDiachi" Mode="In" Type="String" />
+      <Parameter Name="sSDT" Mode="In" Type="String" />
+      <Parameter Name="sTendangnhap" Mode="In" Type="String" />
+      <Parameter Name="sMatkhau" Mode="In" Type="String" />
+      <Parameter Name="FK_iQuyenID" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iTrangthaiID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spNhacungcap_delete">
+      <Parameter Name="PK_iNCCID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spNhacungcap_getByID" ReturnType="Collection(DQH_DATNModel.spNhacungcap_getByID_Result)">
+      <Parameter Name="PK_iNCCID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spNhacungcap_insert">
+      <Parameter Name="sTenNCC" Mode="In" Type="String" />
+      <Parameter Name="sDiachi" Mode="In" Type="String" />
+      <Parameter Name="sSDT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spNhacungcap_update">
+      <Parameter Name="PK_iNCCID" Mode="In" Type="Int32" />
+      <Parameter Name="sTenNCC" Mode="In" Type="String" />
+      <Parameter Name="sDiachi" Mode="In" Type="String" />
+      <Parameter Name="sSDT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spSanpham_delete">
+      <Parameter Name="PK_iSanphamID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spSanpham_getbyDanhmuc" ReturnType="Collection(DQH_DATNModel.spSanpham_getbyDanhmuc_Result)">
+      <Parameter Name="FK_iDanhmucID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spSanpham_GetbyID" ReturnType="Collection(DQH_DATNModel.spSanpham_GetbyID_Result)">
+      <Parameter Name="PK_iSanphamID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spSanpham_Update">
+      <Parameter Name="PK_iSanphamID" Mode="In" Type="Int32" />
+      <Parameter Name="sTenSP" Mode="In" Type="String" />
+      <Parameter Name="sHinhanh" Mode="In" Type="String" />
+      <Parameter Name="sMota" Mode="In" Type="String" />
+      <Parameter Name="iSoluong" Mode="In" Type="Int32" />
+      <Parameter Name="sDonvi" Mode="In" Type="String" />
+      <Parameter Name="iDongia" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iDanhmucID" Mode="In" Type="Int32" />
+      <Parameter Name="FK_iNCCID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spBinhluan_getBySanpham_Result">
+    <Property Type="Int32" Name="PK_iBinhluanID" Nullable="false" />
+    <Property Type="String" Name="sNoidung" Nullable="false" MaxLength="500" />
+    <Property Type="DateTime" Name="dThoigian" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="FK_iNguoidungID" Nullable="false" />
+    <Property Type="Int32" Name="FK_iSanphamID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spChitietdonhang_getByID_Result">
+    <Property Type="Int32" Name="FK_iDonhangID" Nullable="false" />
+    <Property Type="Int32" Name="FK_iSanphamID" Nullable="false" />
+    <Property Type="Int32" Name="iSoluong" Nullable="false" />
+    <Property Type="Int32" Name="iDongia" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spChitietphieunhap_getByID_Result">
+    <Property Type="Int32" Name="FK_iPhieunhapID" Nullable="false" />
+    <Property Type="Int32" Name="FK_iSanphamID" Nullable="false" />
+    <Property Type="Int32" Name="iSoluong" Nullable="false" />
+    <Property Type="Int32" Name="iGianhap" Nullable="false" />
+    <Property Type="Int32" Name="iGiaban" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spDanhmuc_getbyID_Result">
+    <Property Type="Int32" Name="PK_iDanhmucID" Nullable="false" />
+    <Property Type="String" Name="sTendanhmuc" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="spDonhang_getByID_Result">
+    <Property Type="Int32" Name="PK_iDonhangID" Nullable="false" />
+    <Property Type="String" Name="sDiachiGiao" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="sSDT" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="dNgaydat" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="FK_iNguoidungID" Nullable="false" />
+    <Property Type="Int32" Name="FK_iTrangthaiID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spNguoidung_getByID_Result">
+    <Property Type="Int32" Name="PK_iNguoidungID" Nullable="false" />
+    <Property Type="String" Name="sTennguoidung" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="dNgaysinh" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="bGioitinh" Nullable="false" />
+    <Property Type="String" Name="sDiachi" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="sSDT" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="sTendangnhap" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="sMatkhau" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="FK_iQuyenID" Nullable="false" />
+    <Property Type="Int32" Name="FK_iTrangthaiID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spNguoidung_login_Result">
+    <Property Type="Int32" Name="PK_iNguoidungID" Nullable="false" />
+    <Property Type="String" Name="sTennguoidung" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="dNgaysinh" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="bGioitinh" Nullable="false" />
+    <Property Type="String" Name="sDiachi" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="sSDT" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="sTendangnhap" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="sMatkhau" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="FK_iQuyenID" Nullable="false" />
+    <Property Type="Int32" Name="FK_iTrangthaiID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spNhacungcap_getByID_Result">
+    <Property Type="Int32" Name="PK_iNCCID" Nullable="false" />
+    <Property Type="String" Name="sTenNCC" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="sDiachi" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="sSDT" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="spSanpham_getbyDanhmuc_Result">
+    <Property Type="Int32" Name="PK_iSanphamID" Nullable="false" />
+    <Property Type="String" Name="sTenSP" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="sHinhanh" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="sSize" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="sMota" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="iSoluong" Nullable="false" />
+    <Property Type="String" Name="sDonvi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="iDongia" Nullable="false" />
+    <Property Type="Int32" Name="FK_iDanhmucID" Nullable="false" />
+    <Property Type="Int32" Name="FK_iNCCID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spSanpham_GetbyID_Result">
+    <Property Type="Int32" Name="PK_iSanphamID" Nullable="false" />
+    <Property Type="String" Name="sTenSP" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="sHinhanh" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="sSize" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="sMota" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="iSoluong" Nullable="false" />
+    <Property Type="String" Name="sDonvi" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="iDongia" Nullable="false" />
+    <Property Type="Int32" Name="FK_iDanhmucID" Nullable="false" />
+    <Property Type="Int32" Name="FK_iNCCID" Nullable="false" />
+  </ComplexType>
+</Schema>

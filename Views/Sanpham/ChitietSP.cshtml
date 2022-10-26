@@ -1,0 +1,171 @@
+﻿@model DQH_DATN.Models.tblSanpham
+@{
+    ViewBag.Title = "ChitietSP";
+    Layout = "~/Views/MasterPage/layout_login.cshtml";
+    string tinhtrang = "Còn hàng";
+    if(Model.iSoluong==0)
+    {
+        tinhtrang = "Hết hàng";
+    }
+}
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+@if (Model == null)
+{
+    <h3>Sản phẩm không tồn tại!</h3>
+}
+else
+{
+    <section id="aa-product-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-product-details-area">
+                        <div class="aa-product-details-content">
+                            <div class="row">
+                                <!-- Modal view slider -->
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <div class="aa-product-view-slider">
+                                        <div id="demo-1" class="simpleLens-gallery-container">
+                                            <div class="simpleLens-container">
+                                                <div class="simpleLens-big-image-container"><img src="~/Theme/css/img/man/@(Model.sHinhanh).jpg" class="simpleLens-big-image"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal view content -->
+                                <div class="col-md-7 col-sm-7 col-xs-12">
+                                    <div class="aa-product-view-content">
+                                        <h3><b>@Model.sTenSP</b></h3>
+                                        <div class="aa-price-block">
+                                            Giá: <span class="aa-product-view-price"><i>@(Model.iDongia)VNĐ</i></span>
+                                            <p class="aa-product-avilability">Tình trạng: @if (Model.iSoluong > 0)
+                                            { <span style="color:dodgerblue">@tinhtrang</span>}
+                                            else {<span style="color:crimson">@tinhtrang</span> }</p>
+                                        </div>
+                                        <br />
+                                        <h4>Size</h4>
+                                        <div class="aa-prod-view-size">
+                                            <a href="#">S</a>
+                                            <a href="#">M</a>
+                                            <a href="#">L</a>
+                                            <a href="#">XL</a>
+                                        </div>
+                                        @*<h4>Color</h4>
+                                        <div class="aa-color-tag">
+                                            <a href="#" class="aa-color-green"></a>
+                                            <a href="#" class="aa-color-yellow"></a>
+                                            <a href="#" class="aa-color-pink"></a>
+                                            <a href="#" class="aa-color-black"></a>
+                                            <a href="#" class="aa-color-white"></a>
+                                        </div>*@
+                                        <h4>Số lượng</h4>
+                                        <div class="aa-prod-quantity">
+                                            <form action="">
+                                                <select id="" name="" title="Số lượng">
+                                                    <option selected="1" value="0">1</option>
+                                                    <option value="1">2</option>
+                                                    <option value="2">3</option>
+                                                    <option value="3">4</option>
+                                                    <option value="4">5</option>
+                                                    <option value="5">6</option>
+                                                </select>
+                                            </form>
+                                            <p class="aa-prod-category">
+                                                Danh mục: <a href="#">Polo T-Shirt</a>
+                                            </p>
+                                        </div>
+                                        <div class="aa-prod-view-bottom">
+                                            <a class="aa-add-to-cart-btn" href="#">Thêm vào giỏ</a>
+                                            <a class="aa-add-to-cart-btn" href="#">Yêu thích</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aa-product-details-bottom">
+                            <ul class="nav nav-tabs" id="myTab2">
+                                <li><a href="#description" data-toggle="tab">Mô tả</a></li>
+                                <li><a href="#review" data-toggle="tab">Đánh giá</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="description">
+                                    <p class="pMotaSP">@Model.sMota</p>
+                                </div>
+                                <div class="tab-pane fade " id="review">
+                                    <div class="aa-product-review-area">
+                                        <h4>Đánh giá sản phẩm <i>@Model.sTenSP</i></h4>
+                                        <ul class="aa-review-nav">
+                                            <li>
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <a href="#">
+                                                            <img class="media-object" src="img/testimonial-img-3.jpg" alt="girl image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading"><strong>Quang Huy</strong> - <span>12/10/2022</span></h4>
+                                                        <p>Sản phẩm rất tốt</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <a href="#">
+                                                            <img class="media-object" src="img/testimonial-img-3.jpg" alt="girl image">
+                                                        </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading"><strong>Quang Huy</strong> - <span>12/10/2022</span></h4>
+                                                        @*<div class="aa-product-rating">
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star-o"></span>
+                                                        </div>*@
+                                                        <p>Sản phẩm rất tốt</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        @*<div class="aa-your-rating">
+                                            <a href="#"><span class="fa fa-star-o"></span></a>
+                                            <a href="#"><span class="fa fa-star-o"></span></a>
+                                            <a href="#"><span class="fa fa-star-o"></span></a>
+                                            <a href="#"><span class="fa fa-star-o"></span></a>
+                                            <a href="#"><span class="fa fa-star-o"></span></a>
+                                        </div>*@
+                                        <!-- review form -->
+                                        <form action="" class="aa-review-form">
+                                            <div class="form-group">
+                                                <label for="message">Nhận xét của bạn</label>
+                                                <textarea class="form-control" rows="3" id="message"></textarea>
+                                            </div>
+                                            @*<div class="form-group">
+                                                <label for="name">Tên</label>
+                                                <input type="text" class="form-control" id="name" placeholder="Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="email" class="form-control" id="email" placeholder="example@gmail.com">
+                                            </div>*@
+
+                                            <button type="submit" class="btn btn-default aa-review-submit">Gửi</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Related product -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+

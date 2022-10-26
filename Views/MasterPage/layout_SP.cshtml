@@ -1,0 +1,793 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #hover:hover {
+            background-color: white;
+            color: #FF6666 !important;
+        }
+    </style>
+    <link href="~/Theme/css/styleSP.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.title</title>
+
+    <!-- Font awesome -->
+    <link href="~/Theme/css/css/font-awesome.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="~/Theme/css/css/bootstrap.css" rel="stylesheet" />
+    <!-- SmartMenus jQuery Bootstrap Addon CSS -->
+    <link href="~/Theme/css/css/jquery.smartmenus.bootstrap.css" rel="stylesheet" />
+    <!-- Product view slider -->
+    <link href="~/Theme/css/css/jquery.simpleLens.css" rel="stylesheet" />
+    <!-- slick slider -->
+    <link href="~/Theme/css/css/slick.css" rel="stylesheet" />
+    <!-- price picker slider -->
+    <link href="~/Theme/css/css/nouislider.css" rel="stylesheet" />
+
+    <!-- Theme color -->
+    <link href="~/Theme/css/css/theme-color/default-theme.css" rel="stylesheet" />
+
+    <!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
+    <!-- Top Slider CSS -->
+    <link href="~/Theme/css/css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all" />
+
+    <!-- Main style sheet -->
+    <link href="~/Theme/css/css/style.css" rel="stylesheet" />
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css/css?family=Lato' rel='stylesheet' type='text/css/css'>
+    <link href='https://fonts.googleapis.com/css/css?family=Raleway' rel='stylesheet' type='text/css/css'>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body>
+    <!-- wpf loader Two -->
+    <div id="wpf-loader-two">
+        <div class="wpf-loader-two-inner">
+            <span>Loading</span>
+        </div>
+    </div>
+    <!-- / wpf loader Two -->
+    <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+    <!-- END SCROLL TOP BUTTON -->
+    <!-- Start header section -->
+    <header id="aa-header">
+        <!-- start header top  -->
+        <div class="aa-header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-header-top-area">
+                            <!-- start header top left -->
+                            <div class="aa-header-top-left">
+                                <!-- start language -->
+                                <div class="aa-language">
+                                    <div class="dropdown">
+                                        <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                            <img src="~/Theme/img/flag/vietnam.jpg" alt="english flag">VIETNAMESE
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#"><img src="~/Theme/img/flag/vietnam.jpg" alt="">VIETNAMESE</a></li>
+                                            <li><a href="#"><img src="~/Theme/img/flag/english.jpg" alt="">ENGLISH</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- / language -->
+                                <!-- start currency -->
+                                <div class="aa-currency">
+                                    <div class="dropdown">
+                                        <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <i class="fa fa-money"></i>VND
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#"><i class="fa fa-usd"></i>USD</a></li>
+                                            <li><a href="#"><i class="fa fa-euro"></i>EURO</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- / currency -->
+                                <!-- start cellphone -->
+                                <div class="cellphone hidden-xs">
+                                    <p><span class="fa fa-phone"></span>0987.654.321</p>
+                                </div>
+                                <!-- / cellphone -->
+                            </div>
+                            <!-- / header top left -->
+                            <div class="aa-header-top-right">
+                                <ul class="aa-head-top-nav-right">
+                                    <li><a href="account.html">Tài khoản</a></li>
+                                    <li class="hidden-xs"><a href="wishlist.html">Yêu thích</a></li>
+                                    <li class="hidden-xs"><a href="/Sanpham/Theloai?theLoai=Giỏ hàng">Giỏ hàng</a></li>
+                                    <li class="hidden-xs"><a href="checkout.html">Thanh toán</a></li>
+                                    <li><a href="" data-toggle="modal" data-target="#login-modal">Đăng nhập</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / header top  -->
+        <!-- start header bottom  -->
+        <div class="aa-header-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-header-bottom-area">
+                            <!-- logo  -->
+                            <div class="aa-logo">
+                                <!-- Text based logo -->
+                                <a href="index.html">
+                                    <span class="fa fa-diamond"></span>
+                                    <p>rambo<strong>Gym</strong> <span>Gym & Fitness</span></p>
+                                </a>
+                                <!-- img based logo -->
+                                <!-- <a href="index.html"><img src="~/Theme/img/logo.jpg" alt="logo img"></a> -->
+                            </div>
+                            <!-- / logo  -->
+                            <!-- cart box -->
+                            <div class="aa-cartbox">
+                                <a class="aa-cart-link" href="#">
+                                    <span class="fa fa-shopping-basket"></span>
+                                    <span class="aa-cart-title">Giỏ hàng</span>
+                                    <span class="aa-cart-notify">2</span>
+                                </a>
+                                <div class="aa-cartbox-summary">
+                                    <ul>
+                                        <li>
+                                            <a class="aa-cartbox-img" href="#"><img src="~/Theme/img/woman-small-2.jpg" alt="img"></a>
+                                            <div class="aa-cartbox-info">
+                                                <h4><a href="#">Product Name</a></h4>
+                                                <p>1 x 150000VNĐ</p>
+                                            </div>
+                                            <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                                        </li>
+                                        <li>
+                                            <a class="aa-cartbox-img" href="#"><img src="~/Theme/img/woman-small-1.jpg" alt="img"></a>
+                                            <div class="aa-cartbox-info">
+                                                <h4><a href="#">Product Name</a></h4>
+                                                <p>1 x 150000VNĐ</p>
+                                            </div>
+                                            <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                                        </li>
+                                        <li>
+                                            <span class="aa-cartbox-total-title">
+                                                Total
+                                            </span>
+                                            <span class="aa-cartbox-total-price">
+                                                650000VNĐ
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <a class="aa-cartbox-checkout aa-primary-btn" href="checkout.html">Checkout</a>
+                                </div>
+                            </div>
+                            <!-- / cart box -->
+                            <!-- search box -->
+                            <div class="aa-search-box">
+                                <form action="">
+                                    <input type="text" name="" id="" placeholder="Tìm kiếm! VD: 'Áo phông'">
+                                    <button type="submit"><span class="fa fa-search"></span></button>
+                                </form>
+                            </div>
+                            <!-- / search box -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / header bottom  -->
+    </header>
+    <!-- / header section -->
+    <!-- đây là menu -->
+    <section id="menu" style="color:chocolate">
+        <div class="container">
+            <div class="menu-area">
+                <!-- Navbar -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <!-- Left nav -->
+                        <ul class="nav navbar-nav">
+                            <li><a id="hover" href="/trang-chu">Trang chủ</a></li>
+                            <li>
+                                <a href="/danh-sach-SP?id=100">Thời trang nam <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/danh-sach-SP?id=1">Áo phông</a></li>
+                                    <li><a href="/danh-sach-SP?id=2">Quần đùi</a></li>
+                                    <li><a href="/danh-sach-SP?id=3">Găng tay</a></li>
+                                    <li><a href="/danh-sach-SP?id=4">Giày</a></li>
+                                    <li>
+                                        <a href="/danh-sach-SP?id=5">Xem thêm.. <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/danh-sach-SP?id=5">Băng đầu gối</a></li>
+                                            <li><a href="/danh-sach-SP?id=5">Băng cổ tay</a></li>
+                                            <li><a href="/danh-sach-SP?id=5">Tất</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/danh-sach-SP?id=101">Thời trang nữ <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/danh-sach-SP?id=6">Áo body</a></li>
+                                    <li><a href="/danh-sach-SP?id=8">Váy</a></li>
+                                    <li><a href="/danh-sach-SP?id=7">Quần thể thao</a></li>
+                                    <li><a href="/danh-sach-SP?id=9">Giày</a></li>
+                                    <li>
+                                        <a href="/danh-sach-SP?id=10">Xem thêm.. <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/danh-sach-SP?id=10">Cột tóc</a></li>
+                                            <li><a href="/danh-sach-SP?id=10">Đai nịt</a></li>
+                                            <li><a href="/danh-sach-SP?id=10">Dây kháng lực</a></li>
+                                            <li>
+                                                <a href="/danh-sach-SP?id=10">Xem thêm... <span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Mũ</a></li>
+                                                    <li><a href="#">Kính</a></li>
+                                                    <li><a href="#">Trà giảm cân</a></li>
+                                                    <li><a href="#">Thảm yoga</a></li>
+                                                    <li class="disabled"><a class="disabled" href="#">Các vật phẩm khác</a></li>
+                                                    <li><a href="#">Jeans</a></li>
+                                                    <li><a href="#">Polo T-Shirts</a></li>
+                                                    <li><a href="#">SKirts</a></li>
+                                                    <li><a href="#">Jackets</a></li>
+                                                    <li><a href="#">Tops</a></li>
+                                                    <li><a href="#">Make Up</a></li>
+                                                    <li><a href="#">Nail</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/danh-sach-SP?id=102">Thời trang nhí <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/danh-sach-SP?id=11">Áo</a></li>
+                                    <li><a href="/danh-sach-SP?id=12">Quần</a></li>
+                                    <li><a href="/danh-sach-SP?id=14">Giày</a></li>
+                                    <li><a href="/danh-sach-SP?id=15">Mũ</a></li>
+                                    <li>
+                                        <a href="/danh-sach-SP?id=15">Xem thêm.. <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Tất</a></li>
+                                            <li><a href="#">Găng tay</a></li>
+                                            <li><a href="#">Băng cuốn</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Dụng cụ <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/danh-sach-SP?id=13">Tạ</a></li>
+                                    <li><a href="/danh-sach-SP?id=13">Dây kháng lực</a></li>
+                                    <li><a href="/danh-sach-SP?id=13">Găng tay</a></li>
+                                    <li><a href="/danh-sach-SP?id=13">Ghế tạ</a></li>
+                                    <li><a href="/danh-sach-SP?id=13">Máy chạy bộ</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Blog <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="blog-archive.html">Thể thao</a></li>
+                                    <li><a href="blog-archive-2.html">Sức khỏe</a></li>
+                                    <li><a href="blog-single.html">Giải đấu</a></li>
+                                </ul>
+                            </li>
+                            <li><a id="hover" href="/thong-tin">Thông tin</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / menu -->
+    <!-- Start slider -->
+    <section id="aa-slider">
+        <div class="aa-slider-area">
+            <div id="sequence" class="seq">
+                <div class="seq-screen">
+                    <ul class="seq-canvas">
+                        <!-- single slide item -->
+                        <li>
+                            <div class="seq-model">
+
+                                <img data-seq src="~/Theme/img/banner.jpg" alt="Male Female slide img" />
+                            </div>
+                            <div class="seq-title">
+                                <span data-seq>Ưu đãi thành viên mới</span>
+                                <h2 data-seq>Vóc dáng và sức khỏe</h2>
+                                @*<p style="color: white; text-shadow: black 0.1em 0.1em 0.2em;" data-seq>Mang lại cảm hứng và sự đổi mới cho mọi vận động viên trên thế giới. Nếu bạn có thân hình đẹp, bạn là vận động viên</p>*@
+                                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">GHÉ THĂM</a>
+                            </div>
+                        </li>
+                        <!-- single slide item -->
+                        <li>
+                            <div class="seq-model">
+                                <img data-seq src="~/Theme/img/ban1.jpg" alt="Wristwatch slide img" />
+                            </div>
+                            <div class="seq-title">
+                                <span data-seq>Giảm giá lên đến 50%</span>
+                                <h2 data-seq>Thời trang thể thao</h2>
+                                @*<p data-seq>Mang lại cảm hứng và sự đổi mới cho mọi vận động viên trên thế giới. Nếu bạn có thân hình đẹp, bạn là vận động viên</p>*@
+                                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">GHÉ THĂM</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- slider navigation btn -->
+                <fieldset class="seq-nav" aria-controls="sequence" aria-label="Slider buttons">
+                    <a type="button" class="seq-prev" aria-label="Previous"><span class="fa fa-angle-left"></span></a>
+                    <a type="button" class="seq-next" aria-label="Next"><span class="fa fa-angle-right"></span></a>
+                </fieldset>
+            </div>
+        </div>
+    </section>
+    <!-- / slider -->
+    <!-- Products section -->
+    <section id="aa-product">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="aa-product-area">
+                            <div class="aa-product-inner">
+                                <!-- start prduct navigation -->
+                                <br />
+                                <br />
+                                <!-- Tab panes -->
+                                @RenderBody()
+                                <!-- quick view modal -->
+                                <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <div class="row">
+                                                    <!-- Modal view slider -->
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="aa-product-view-slider">
+                                                            <div class="simpleLens-gallery-container" id="demo-1">
+                                                                <div class="simpleLens-container">
+                                                                    <div class="simpleLens-big-image-container">
+                                                                        <a class="simpleLens-lens-image" data-lens-image="~/Theme/img/view-slider/large/polo-shirt-1.png">
+                                                                            <img src="~/Theme/img/view-slider/medium/polo-shirt-1.png" class="simpleLens-big-image">
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="simpleLens-thumbnails-container">
+                                                                    <a href="#" class="simpleLens-thumbnail-wrapper"
+                                                                       data-lens-image="~/Theme/img/view-slider/large/polo-shirt-1.png"
+                                                                       data-big-image="~/Theme/img/view-slider/medium/polo-shirt-1.png">
+                                                                        <img src="~/Theme/img/view-slider/thumbnail/polo-shirt-1.png">
+                                                                    </a>
+                                                                    <a href="#" class="simpleLens-thumbnail-wrapper"
+                                                                       data-lens-image="~/Theme/img/view-slider/large/polo-shirt-3.png"
+                                                                       data-big-image="~/Theme/img/view-slider/medium/polo-shirt-3.png">
+                                                                        <img src="~/Theme/img/view-slider/thumbnail/polo-shirt-3.png">
+                                                                    </a>
+
+                                                                    <a href="#" class="simpleLens-thumbnail-wrapper"
+                                                                       data-lens-image="~/Theme/img/view-slider/large/polo-shirt-4.png"
+                                                                       data-big-image="~/Theme/img/view-slider/medium/polo-shirt-4.png">
+                                                                        <img src="~/Theme/img/view-slider/thumbnail/polo-shirt-4.png">
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Modal view content -->
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="aa-product-view-content">
+                                                            <h3>T-Shirt</h3>
+                                                            <div class="aa-price-block">
+                                                                <span class="aa-product-view-price">$34.99</span>
+                                                                <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
+                                                            </div>
+                                                            <p>Sản phẩm rất tốt Officiis animi, veritatis quae repudiandae quod nulla porro quidem, itaque quis quaerat!</p>
+                                                            <h4>Size</h4>
+                                                            <div class="aa-prod-view-size">
+                                                                <a href="#">S</a>
+                                                                <a href="#">M</a>
+                                                                <a href="#">L</a>
+                                                                <a href="#">XL</a>
+                                                            </div>
+                                                            <div class="aa-prod-quantity">
+                                                                <form action="">
+                                                                    <select name="" id="">
+                                                                        <option value="0" selected="1">1</option>
+                                                                        <option value="1">2</option>
+                                                                        <option value="2">3</option>
+                                                                        <option value="3">4</option>
+                                                                        <option value="4">5</option>
+                                                                        <option value="5">6</option>
+                                                                    </select>
+                                                                </form>
+                                                                <p class="aa-prod-category">
+                                                                    Category: <a href="#">Polo T-Shirt</a>
+                                                                </p>
+                                                            </div>
+                                                            <div class="aa-prod-view-bottom">
+                                                                <a href="#" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                                                <a href="#" class="aa-add-to-cart-btn">View Details</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- / quick view modal -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Products section -->
+    <section id="aa-support">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-support-area">
+                        <!-- single support -->
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="aa-support-single">
+                                <span class="fa fa-truck"></span>
+                                <h4>MIỄN PHÍ GIAO HÀNG</h4>
+                                <P>Nhanh chóng, tiện lợi, dễ dàng mua sắm.</P>
+                            </div>
+                        </div>
+                        <!-- single support -->
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="aa-support-single">
+                                <span class="fa fa-clock-o"></span>
+                                <h4>30 NGÀY HOÀN TIỀN</h4>
+                                <P>Cam kết đảm bảo chất lượng.</P>
+                            </div>
+                        </div>
+                        <!-- single support -->
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="aa-support-single">
+                                <span class="fa fa-phone"></span>
+                                <h4>HỖ TRỢ 24/7</h4>
+                                <P>Tư vấn khách hàng tận tâm, chu đáo.</P>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Support section -->
+    <!-- Testimonial -->
+    <section id="aa-testimonial">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-testimonial-area">
+                        <ul class="aa-testimonial-slider">
+                            <!-- single slide -->
+                            <li>
+                                <div class="aa-testimonial-single">
+                                    <img class="aa-testimonial-img" src="~/Theme/img/testimonial-img-2.jpg" alt="testimonial img">
+                                    <span class="fa fa-quote-left aa-testimonial-quote"></span>
+                                    <p>Mang lại cảm hứng và sự đổi mới cho mọi vận động viên trên thế giới. Nếu bạn có thân hình đẹp, bạn là vận động viên</p>
+                                    <div class="aa-testimonial-info">
+                                        <p>RamboGym</p>
+                                        <a href="#">Doanh nghiệp</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- single slide -->
+                            <li>
+                                <div class="aa-testimonial-single">
+                                    <img class="aa-testimonial-img" src="~/Theme/img/IMG_0386.JPG" alt="testimonial img" />
+                                    <span class="fa fa-quote-left aa-testimonial-quote"></span>
+                                    <p>Mang lại cảm hứng và sự đổi mới cho mọi vận động viên trên thế giới. Nếu bạn có thân hình đẹp, bạn là vận động viên</p>
+                                    <div class="aa-testimonial-info">
+                                        <p>Quang Huy</p>
+                                        <a href="#">Doanh nhân</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- single slide -->
+                            <li>
+                                <div class="aa-testimonial-single">
+                                    <img class="aa-testimonial-img" src="~/Theme/img/IMG_0386.JPG" alt="testimonial img" />
+                                    <span class="fa fa-quote-left aa-testimonial-quote"></span>
+                                    <p>Mang lại cảm hứng và sự đổi mới cho mọi vận động viên trên thế giới. Nếu bạn có thân hình đẹp, bạn là vận động viên</p>
+                                    <div class="aa-testimonial-info">
+                                        <p>Quang Huy</p>
+                                        <a href="#">Tổng giám đốc</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Testimonial -->
+    <!-- Latest Blog -->
+    <section id="aa-latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-latest-blog-area">
+                        <h2>DANH MỤC BLOG</h2>
+                        <div class="row">
+                            <!-- single latest blog -->
+                            <div class="col-md-4 col-sm-4">
+                                <div class="aa-latest-blog-single">
+                                    <figure class="aa-blog-img">
+                                        <a href="#"><img src="~/Theme/img/promo-banner-1.jpg" alt="img"></a>
+                                        <figcaption class="aa-blog-img-caption">
+                                            <span href="#"><i class="fa fa-eye"></i>5K</span>
+                                            <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
+                                            <a href="#"><i class="fa fa-comment-o"></i>20</a>
+                                            <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+                                        </figcaption>
+                                    </figure>
+                                    <div class="aa-blog-info">
+                                        <h3 class="aa-blog-title"><a href="#">Từ uy tín trong việc cung cấp bảng điểm điện tử</a></h3>
+                                        <p style="font-family:'Times New Roman';font-size:14pt; text-align:justify">Từ uy tín trong việc cung cấp bảng điểm điện tử, công ty Vifa đã được chọn là đơn vị nhập khẩu thiết bị phục vụ thể thao cung cấp cho các trung tâm TDTT trên toàn quốc.</p>
+                                        <a href="#" class="aa-read-mor-btn">Chi tiết <span class="fa fa-long-arrow-right"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single latest blog -->
+                            <div class="col-md-4 col-sm-4">
+                                <div class="aa-latest-blog-single">
+                                    <figure class="aa-blog-img">
+                                        <a href="#"><img src="~/Theme/img/promo-banner-3.jpg" alt="img"></a>
+                                        <figcaption class="aa-blog-img-caption">
+                                            <span href="#"><i class="fa fa-eye"></i>5K</span>
+                                            <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
+                                            <a href="#"><i class="fa fa-comment-o"></i>20</a>
+                                            <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+                                        </figcaption>
+                                    </figure>
+                                    <div class="aa-blog-info">
+                                        <h3 class="aa-blog-title"><a href="#">Từ uy tín trong việc cung cấp bảng điểm điện tử</a></h3>
+                                        <p style="font-family:'Times New Roman';font-size:14pt; text-align:justify">Từ uy tín trong việc cung cấp bảng điểm điện tử, công ty Vifa đã được chọn là đơn vị nhập khẩu thiết bị phục vụ thể thao cung cấp cho các trung tâm TDTT trên toàn quốc.</p>
+                                        <a href="#" class="aa-read-mor-btn">Chi tiết <span class="fa fa-long-arrow-right"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single latest blog -->
+                            <div class="col-md-4 col-sm-4">
+                                <div class="aa-latest-blog-single">
+                                    <figure class="aa-blog-img">
+                                        <a href="#"><img src="~/Theme/img/promo-banner-1.jpg" alt="img"></a>
+                                        <figcaption class="aa-blog-img-caption">
+                                            <span href="#"><i class="fa fa-eye"></i>5K</span>
+                                            <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
+                                            <a href="#"><i class="fa fa-comment-o"></i>20</a>
+                                            <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+                                        </figcaption>
+                                    </figure>
+                                    <div class="aa-blog-info">
+                                        <h3 class="aa-blog-title"><a href="#">Từ uy tín trong việc cung cấp bảng điểm điện tử</a></h3>
+                                        <p style="font-family:'Times New Roman';font-size:14pt; text-align:justify">Từ uy tín trong việc cung cấp bảng điểm điện tử, công ty Vifa đã được chọn là đơn vị nhập khẩu thiết bị phục vụ thể thao cung cấp cho các trung tâm TDTT trên toàn quốc.</p>
+                                        <a href="#" class="aa-read-mor-btn">Chi tiết <span class="fa fa-long-arrow-right"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Latest Blog -->
+    <!-- Client Brand -->
+    <section id="aa-client-brand">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-client-brand-area">
+                        <ul class="aa-client-brand-slider">
+                            <li><a href="#"><img src="~/Theme/img/banner.png" alt="java img"></a></li>
+                            <li><a href="#"><img src="~/Theme/img/banner1.png" alt="jquery img"></a></li>
+                            <li><a href="#"><img src="~/Theme/img/banner2.png" alt="html5 img"></a></li>
+                            <li><a href="#"><img src="~/Theme/img/banner3.png" alt="css3 img"></a></li>
+                            <li><a href="#"><img src="~/Theme/img/banner4.png" alt="wordPress img"></a></li>
+                            <li><a href="#"><img src="~/Theme/img/banner5.png" alt="joomla img"></a></li>
+                            <li><a href="#"><img src="~/Theme/img/client-brand-java.png" alt="java img"></a></li>
+                            <li><a href="#"><img src="~/Theme/img/client-brand-jquery.png" alt="jquery img"></a></li>
+                            <li><a href="#"><img src="~/Theme/img/client-brand-html5.png" alt="html5 img"></a></li>
+                            <li><a href="#"><img src="~/Theme/img/client-brand-css3.png" alt="css3 img"></a></li>
+                            <li><a href="#"><img src="~/Theme/img/client-brand-wordpress.png" alt="wordPress img"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Client Brand -->
+    <!-- Subscribe section -->
+    <section id="aa-subscribe">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-subscribe-area">
+                        <h3>Đăng ký để nhận thông tin mới nhất </h3>
+                        <p class="p">Trở thành khách hàng đặc biệt với những ưu đãi hấp dẫn. Đăng ký ngay!</p>
+                        <form action="" class="aa-subscribe-form">
+                            <input type="email" name="" id="" placeholder="Nhập Email">
+                            <input type="submit" value="Đăng ký">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Subscribe section -->
+    <!-- footer -->
+    <footer id="aa-footer">
+        <!-- footer bottom -->
+        <div class="aa-footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-footer-top-area">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <h3>Thông Tin Chính</h3>
+                                        <ul class="aa-footer-nav">
+                                            <li><a href="/trang-chu">Trang chủ</a></li>
+                                            <li><a href="#">Dịch vụ</a></li>
+                                            <li><a href="#">Sản phẩm</a></li>
+                                            <li><a href="#">Tìm hiểu</a></li>
+                                            <li><a href="#">Liên hệ</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget">
+                                            <h3>Tìm Hiểu Thêm</h3>
+                                            <ul class="aa-footer-nav">
+                                                <li><a href="#">Đời sống</a></li>
+                                                <li><a href="#">Thế giới</a></li>
+                                                <li><a href="#">Xu hướng</a></li>
+                                                <li><a href="#">Giảm giá</a></li>
+                                                <li><a href="#">Gian đặc biệt</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget">
+                                            <h3>Liên Kết</h3>
+                                            <ul class="aa-footer-nav">
+                                                <li><a href="#">Đường đi</a></li>
+                                                <li><a href="#">Tìm kiếm</a></li>
+                                                <li><a href="#">Tra cứu</a></li>
+                                                <li><a href="#">Hỗ trợ</a></li>
+                                                <li><a href="#">FAQ</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget">
+                                            <h3>Liên Hệ</h3>
+                                            <address>
+                                                <p> 141 Trương Định, Tương Mai, Hoàng Mai, Hà Nội</p>
+                                                <p><span class="fa fa-phone"></span>+84 987 654 321</p>
+                                                <p><span class="fa fa-envelope"></span>rambogym@gmail.com</p>
+                                            </address>
+                                            <div class="aa-footer-social">
+                                                <a href="#"><span class="fa fa-facebook"></span></a>
+                                                <a href="#"><span class="fa fa-twitter"></span></a>
+                                                <a href="#"><span class="fa fa-google-plus"></span></a>
+                                                <a href="#"><span class="fa fa-youtube"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer-bottom -->
+        <div class="aa-footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-footer-bottom-area">
+                            <p>Designed by <a href="https://www.facebook.com/huydo2424">KangHee.io</a></p>
+                            <div class="aa-footer-payment">
+                                <span class="fa fa-cc-mastercard"></span>
+                                <span class="fa fa-cc-visa"></span>
+                                <span class="fa fa-paypal"></span>
+                                <span class="fa fa-cc-discover"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- / footer -->
+    <!-- Login Modal -->
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4>Đăng nhập hoặc đăng ký</h4>
+                    <form class="aa-login-form" action="">
+                        <label for="">Tên đăng nhập hoặc Email<span>*</span></label>
+                        <input type="text" placeholder="Username">
+                        <label for="">Mật khẩu<span>*</span></label>
+                        <input type="password" placeholder="Password">
+                        <button class="aa-browse-btn" type="submit">Đăng nhập</button>
+                        <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Ghi nhớ </label>
+                        <p class="aa-lost-password"><a href="#">Quên mật khẩu?</a></p>
+                        <div class="aa-register-now">
+                            Không có tài khoản?<a href="account.html">Đăng ký ngay!</a>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Theme/js/bootstrap.js"></script>
+    <!-- SmartMenus jQuery plugin -->
+    <script src="~/Theme/js/jquery.smartmenus.js"></script>
+    <!-- SmartMenus jQuery Bootstrap Addon -->
+    <script src="~/Theme/js/jquery.smartmenus.bootstrap.js"></script>
+    <!-- To Slider JS -->
+    <script src="~/Theme/js/sequence.js"></script>
+    <script src="~/Theme/js/sequence-theme.modern-slide-in.js"></script>
+    <!-- Product view slider -->
+    <script src="~/Theme/js/jquery.simpleGallery.js"></script>
+
+    <script src="~/Theme/js/jquery.simpleLens.js"></script>
+    <!-- slick slider -->
+    <script src="~/Theme/js/slick.js"></script>
+
+    <!-- Price picker slider -->
+    <script src="~/Theme/js/nouislider.js"></script>
+    <!-- Custom js -->
+    <script src="~/Theme/js/custom.js"></script>
+
+</body>
+</html>

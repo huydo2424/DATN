@@ -1,0 +1,95 @@
+﻿@model List<DQH_DATN.Models.tblSanpham>
+@using DQH_DATN.Models;
+@{
+    ViewBag.Title = "DanhsachSP";
+    Layout = "~/Views/MasterPage/layout_SP.cshtml";
+
+}
+<link href="~/Theme/css/styleSP.css" rel="stylesheet" />
+
+@foreach (var item in Model)
+{
+    @*<div class="col-3 sanpham">
+            <div class="pic">
+                <a href="/Sanpham/ChitietSP?id=@item.PK_iSanphamID" class="aa-product-img" href="#"><img style="height:262.5px;" onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="~/Theme/css/img/man/@(item.sHinhanh).jpg" alt="polo shirt img"></a>
+
+            </div>
+            <div class="tt">
+                <a class="aa-add-card-btn" href="#"><span style="text-align:center;" class="fa fa-shopping-cart cart" id="cart">Add To Cart</span></a><br />
+                <a href="/Sanpham/ChitietSP?id=@item.PK_iSanphamID"><label>@item.sTenSP</label></a>
+            </div>
+            <div class="price">
+                <label>@(item.iDongia)VNĐ</label>
+            </div>
+        </div>*@
+
+}
+@{ 
+    string a;
+    switch (ViewBag.id)
+    {
+        case 1: a = "Áo phông nam"; break;
+        case 2: a = "Quần đùi nam"; break;
+        case 3: a = "Găng tay nam"; break;
+        case 4: a = "Giày nam"; break;
+        case 5: a = "Dụng cụ"; break;
+        case 6: a = "Áo nữ"; break;
+        case 7: a = "Quần nữ"; break;
+        case 8: a = "Váy nữ"; break;
+        case 9: a = "Giày nữ"; break;
+        case 10: a = "Dụng cụ"; break;
+        case 11: a = "Áo trẻ em"; break;
+        case 12: a = "Quần trẻ em"; break;
+        case 13: a = "Găng tay trẻ em"; break;
+        case 14: a = "Dụng cụ cho trẻ"; break;
+        default: a = "Danh sách sản phẩm"; break;
+
+    }
+    <h2>@a</h2>
+            }
+            @using (var sp = new DQH_DATNEntities())
+            {
+                //var danhmuc = sp.spDanhmuc_getbyID(ViewBag.id);
+                var dsSP = sp.spSanpham_getbyDanhmuc(ViewBag.id);
+    @*foreach (var dm in danhmuc)
+                {
+        <h2>@dm.sTendanhmuc</h2>
+    }*@
+    if (ViewBag.soluong == 0)
+                {
+        <div style="min-height:500px;">
+            <p class="p">Mẫu này đang tạm thời hết sản phẩm!</p>
+        </div>
+
+    }
+    foreach (var item in dsSP)
+    {
+        <div class="col-3 sanpham">
+            <div class="pic">
+                <a href="/Sanpham/ChitietSP?id=@item.PK_iSanphamID" class="aa-product-img"><img style="height:262.5px;" onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="~/Theme/css/img/man/@(item.sHinhanh).jpg" alt="polo shirt img"></a>
+
+            </div>
+            <div class="tt">
+                <a class="aa-add-card-btn" href="/Sanpham/Theloai?id=@(item.PK_iSanphamID)"><span style="text-align:center;" class="fa fa-shopping-cart cart" id="cart">Add To Cart</span></a><br />
+                <a href="/Sanpham/ChitietSP?id=@item.PK_iSanphamID"><label>@item.sTenSP</label></a>
+            </div>
+            <div class="price">
+                <label>@(item.iDongia)VNĐ</label>
+            </div>
+        </div>
+    }
+}
+
+<script>
+    function bigImg(x) {
+        //x.style.width = "102%";
+        //x.style.margin = "-5px";
+    }
+
+    function normalImg(x) {
+        //x.style.width = "100%";
+        //x.style.margin ="";
+    }
+</script>
+
+
